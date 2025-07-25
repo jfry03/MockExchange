@@ -215,6 +215,8 @@ class Exchange:
 
 
 if __name__ == "__main__":
+
+
     p1 = Product("UEC")
     exchange = Exchange([p1])
 
@@ -224,3 +226,6 @@ if __name__ == "__main__":
 
     exchange.display_book()
     print(exchange.trade_log)
+
+
+    print("I Made A Change")
