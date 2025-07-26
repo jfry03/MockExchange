@@ -140,6 +140,7 @@ class Game:
     def game_loop(self, loop_num):
         
         for bot_name, bot in self.bots.items():
+
             # ===== Get Messages from Bot =====
             if bot_name in self.player_bots:
                 messages = bot.send_messages(self.exchange.book)

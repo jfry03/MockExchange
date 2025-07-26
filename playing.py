@@ -5,6 +5,8 @@ from your_algo import PlayerAlgorithm  #
 import pandas as pd
 import matplotlib.pyplot as plt
 import json
+from analytics import Analytics
+
 
 
 
@@ -56,46 +58,11 @@ g.initialise_game()
 g.play_game(20000) # 20000 just refers to the number of loops
 
 
-market_maker_params = bot_params["market_maker_params"]
+analysis = Analytics(g, bot_params)
+
+analysis.plot_results(["UEC"])
 
 
-player_positions = g.positions[player_bot.name]
-cash = player_positions["Cash"]
-
-for ticker in player_positions:
-    print(ticker)
-    if ticker == "Cash":
-        continue
-    product = tickers_to_products[ticker]
-    """going to equaliseas per the mm market impact. This seems pretty necesssary 
-    as I've got no position limits so otherwise you could do some weird stuff and 
-    trade like 100% of the volume i think idk but this is preventative and reasonable"""
-    if player_positions[ticker] > 0:
-        best_ask = g.exchange.display_book()[ticker]["Asks"][0]
-        first_trade_price = best_ask.price
-        # so level_size every mpv_frequencies * product.mpv
-        level_spacing = product.mpv * market_maker_params["mpv_frequencies"][ticker]
-        worst_trade_price = first_trade_price - level_spacing/market_maker_params["level_size"][ticker]
-        cash += player_positions[ticker] * (first_trade_price + worst_trade_price) / 2
-    elif player_positions[ticker] < 0:
-        best_bid = g.exchange.display_book()[ticker]["Bids"][0]
-        first_trade_price = best_bid.price
-        level_spacing = product.mpv * market_maker_params["mpv_frequencies"][ticker]
-        worst_trade_price = first_trade_price + level_spacing/market_maker_params["level_size"][ticker]
-        cash -= player_positions[ticker] * (first_trade_price + worst_trade_price) / 2
-
-print(f"Final Cash: {cash}")                                                                              
-
-df = pd.DataFrame(g.record)
-df.to_csv("game_record.csv", index=False) 
-
-
-g.exchange.display_book()
-
-
-    
-plt.plot(df["UEC"], linewidth=0.2, label="Mid Price")
-plt.show()
 
 
 

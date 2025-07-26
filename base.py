@@ -101,8 +101,6 @@ class Exchange:
 
         if order.order_id in self.order_ids.keys():
             raise ValueError("Already Seen OrderId. Please ensure that a new OrderId has been generated")
-        with open("orders.txt", "a") as f:
-            f.write(str(order) + ' ' + str(loop_num) + ' ' + "\n")
         trades = []
         book = self.book[order.ticker]
         side_to_match = "Asks" if order.agg_dir == "Buy" else "Bids" # what side of the book to look at to try and match

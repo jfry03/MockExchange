@@ -1,14 +1,4 @@
 {
-  "market_maker_params": {
-    "bot_type": "market_maker",
-    "products": ["UEC"],
-    "name": "market_maker",
-    "mids": {"UEC": 1000},
-    "mpv_frequencies": {"UEC": 10},
-    "level_size": {"UEC": 20},
-    "initial_width": {"UEC": 20},
-    "level_count": 20
-  },
   "r1_params": {
     "bot_type": "random_trader",
     "products": ["UEC"],
@@ -42,5 +32,15 @@
     "freq": {"UEC": 0.001},
     "sentiment_influence": {"UEC": -0.3},
     "max_levels": {"UEC": 18}
+  },
+  "market_maker_params": {
+    "bot_type": "market_maker",
+    "products": ["UEC"],
+    "name": "market_maker",
+    "mids": {"UEC": 1000},
+    "mpv_frequencies": {"UEC": 10},
+    "level_size": {"UEC": 20},
+    "initial_width": {"UEC": 20},
+    "level_count": 20
   }
 }
