@@ -201,6 +201,8 @@ class Game:
         return True
 
     def soft_limit(self, order):
+        return True
+        """
         product = self.ticker_to_product[order.ticker]
         pos_lim = product.pos_limit
         if pos_lim is None or order.bot_name in self.exempt_bots:
@@ -209,6 +211,8 @@ class Game:
         current_pos = self.positions[order.bot_name][order.ticker]
         new_pos = current_pos + real_size
         return -pos_lim <= new_pos <= pos_lim
+
+        """
 
     def hard_limit(self, order):
         return False  # implement as neededs

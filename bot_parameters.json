@@ -1,0 +1,46 @@
+{
+  "market_maker_params": {
+    "bot_type": "market_maker",
+    "products": ["UEC"],
+    "name": "market_maker",
+    "mids": {"UEC": 1000},
+    "mpv_frequencies": {"UEC": 10},
+    "level_size": {"UEC": 20},
+    "initial_width": {"UEC": 20},
+    "level_count": 20
+  },
+  "r1_params": {
+    "bot_type": "random_trader",
+    "products": ["UEC"],
+    "name": "customer_flow1",
+    "max_sizes": {"UEC": 50},
+    "sizing_factor": 1000,
+    "freq": 0.2
+  },
+  "r2_params": {
+    "bot_type": "random_trader",
+    "products": ["UEC"],
+    "name": "customer_flow2",
+    "max_sizes": {"UEC": 20},
+    "sizing_factor": 2000,
+    "freq": 0.3
+  },
+  "reverter_params": {
+    "bot_type": "reverter",
+    "products": ["UEC"],
+    "name": "rev",
+    "sizing_factor": {"UEC": 5000},
+    "freq": {"UEC": 0.4},
+    "sentiment_influence": {"UEC": 0.015},
+    "max_sizes": {"UEC": 80}
+  },
+  "taker_params": {
+    "bot_type": "taker", 
+    "products": ["UEC"],
+    "name": "whale",
+    "sizing_factor": {"UEC": 100000},
+    "freq": {"UEC": 0.001},
+    "sentiment_influence": {"UEC": -0.3},
+    "max_levels": {"UEC": 18}
+  }
+}
