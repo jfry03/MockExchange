@@ -60,6 +60,7 @@ g.play_game(20000) # 20000 just refers to the number of loops
 
 analysis = Analytics(g, bot_params)
 
+analysis.upload_csv("game_record.csv")
 analysis.plot_results(["UEC"])
 
 

@@ -87,3 +87,5 @@ class Analytics:
         df.to_csv(filename, index=False)
         print(f"Game record saved to {filename}")
 
+    
+
