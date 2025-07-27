@@ -34,7 +34,6 @@ for bot_name, params in bot_params.items():
     bot_class = bot_type_to_class[bot_params[bot_name]["bot_type"]]
     market_bots[bot_name] = bot_class(**params)
 
-print(market_bots)
 
 player_bot = PlayerAlgorithm(products)
 
@@ -56,12 +55,14 @@ doesnt get certain information that i transfer around between the other bots to 
 
 g.initialise_game()
 g.play_game(20000) # 20000 just refers to the number of loops
+pd.DataFrame(player_bot.mids).to_csv("player_mid_prices.csv")
 
 
 analysis = Analytics(g, bot_params)
 
 analysis.upload_csv("game_record.csv")
 analysis.plot_results(["UEC"])
+
 
 
 
